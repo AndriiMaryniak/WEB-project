@@ -109,3 +109,46 @@
     font-size: 1.1rem;
   }
 }
+
+.detailsContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.detailsPoster {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.fullDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #3498db;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.backButton:hover {
+  background: #2980b9;
+}
+
+.selected {
+  background: #2ecc71 !important;
+  color: white !important;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
