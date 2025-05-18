@@ -1,0 +1,56 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.searchContainer {
+  margin: 40px 0;
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+  color: #666;
+}
+
+.emptyState h2 {
+  margin-bottom: 16px;
+  color: #333;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    gap: 24px;
+  }
+  
+  .searchInput {
+    padding: 14px 20px;
+  }
+}
