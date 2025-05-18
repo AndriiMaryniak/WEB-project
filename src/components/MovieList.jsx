@@ -4,7 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 import MovieCard from './MovieCard';
 import styles from './MovieList.module.css';
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, loading }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('all');
   const [selectedTime, setSelectedTime] = useState('all');
@@ -76,7 +76,7 @@ const MovieList = ({ movies }) => {
         ))}
       </div>
 
-      {filteredMovies.length === 0 && !loading && (
+      {!loading && filteredMovies.length === 0 && (
         <div className={styles.emptyState}>
           <h2>Фільмів не знайдено 😕</h2>
           <p>Спробуйте змінити параметри пошуку</p>
@@ -87,7 +87,8 @@ const MovieList = ({ movies }) => {
 };
 
 MovieList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default MovieList;

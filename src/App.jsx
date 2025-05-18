@@ -26,11 +26,11 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1 className="mainTitle">Cinema no Takizawa</h1>
+        <h1 className="mainTitle">CineMagic</h1>
         <p className="subtitle">Оберіть фільм та час сеансу</p>
       </header>
       
-      {loading ? <Loader /> : <MovieList movies={movies} />}
+      {loading ? <Loader /> : <MovieList movies={movies} loading={loading} />}
     </div>
   );
 }
