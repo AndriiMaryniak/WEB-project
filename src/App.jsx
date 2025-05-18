@@ -10,7 +10,10 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTime, setSelectedTime] = useState(() => {
-    return localStorage.getItem('selectedTime') || '';
+    return localStorage.getItem('selectedTime') || 'all';
+  });
+  const [selectedGenre, setSelectedGenre] = useState(() => {
+    return localStorage.getItem('selectedGenre') || 'all';
   });
 
   useEffect(() => {
@@ -28,11 +31,19 @@ function App() {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('selectedGenre', selectedGenre);
+  }, [selectedGenre]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedTime', selectedTime);
+  }, [selectedTime]);
+
   return (
     <Router>
       <div className="App">
         <header className="header">
-          <h1 className="mainTitle">CineMagic</h1>
+          <h1 className="mainTitle">Cinema no Takizawa</h1>
           <p className="subtitle">Оберіть фільм та час сеансу</p>
         </header>
         
@@ -43,6 +54,9 @@ function App() {
               movies={movies} 
               selectedTime={selectedTime}
               setSelectedTime={setSelectedTime}
+              selectedGenre={selectedGenre}
+              setSelectedGenre={setSelectedGenre}
+              loading={loading}
             />
           }/>
           <Route path="/movie/:id" element={<MovieDetails movies={movies} />} />

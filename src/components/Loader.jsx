@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImSpinner8 } from 'react-icons/im';
+import { ImSpinner8 } from 'react-icons/im'; // Виправлений імпорт
 import styles from './Loader.module.css';
 
 const Loader = () => {

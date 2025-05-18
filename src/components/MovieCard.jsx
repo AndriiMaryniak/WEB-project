@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieCard.module.css';
 
-const MovieCard = ({ movie, onTimeSelect, selectedTime }) => {
+const MovieCard = ({ movie, selectedTime }) => {
   return (
     <div className={styles.card}>
       <div className={styles.posterWrapper}>
@@ -24,7 +24,6 @@ const MovieCard = ({ movie, onTimeSelect, selectedTime }) => {
               className={`${styles.timeButton} ${
                 selectedTime === time ? styles.selected : ''
               }`}
-              onClick={() => onTimeSelect(time)}
             >
               {time}
             </button>
@@ -37,7 +36,6 @@ const MovieCard = ({ movie, onTimeSelect, selectedTime }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
-  onTimeSelect: PropTypes.func.isRequired,
   selectedTime: PropTypes.string
 };
 

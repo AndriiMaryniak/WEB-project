@@ -19,12 +19,69 @@
   font-size: 1rem;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  color: #000 !important;
 }
 
 .searchInput:focus {
   outline: none;
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.genreFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.genreButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.genreButton:hover {
+  background: #3498db;
+  color: white;
+}
+
+.activeGenre {
+  background: #2ecc71 !important;
+  color: white !important;
+}
+
+.timeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.timeButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.timeButton:hover {
+  background: #3498db;
+  color: white;
+}
+
+.activeTime {
+  background: #e67e22 !important;
+  color: white !important;
 }
 
 .grid {
@@ -45,12 +102,7 @@
   color: #333;
 }
 
-@media (max-width: 480px) {
-  .grid {
-    gap: 24px;
-  }
-  
-  .searchInput {
-    padding: 14px 20px;
-  }
+.cardLink {
+  text-decoration: none;
+  color: inherit;
 }
