@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
         
         <div className={styles.meta}>
           <span className={styles.genre}>{movie.genre}</span>
-          <span className={styles.duration}>2h 15m</span>
+          <span className={styles.duration}>{movie.duration} хв</span>
         </div>
 
         <p className={styles.description}>{movie.description}</p>
@@ -30,7 +30,7 @@ const MovieCard = ({ movie }) => {
             <button 
               key={time} 
               className={styles.timeButton}
-              onClick={() => console.log(`Selected ${time}`)}
+              onClick={() => console.log(`Обрано сеанс ${time}`)}
             >
               {time}
             </button>
@@ -49,7 +49,8 @@ MovieCard.propTypes = {
     genre: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     showtimes: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rating: PropTypes.number
+    rating: PropTypes.number,
+    duration: PropTypes.number.isRequired
   }).isRequired
 };
 
