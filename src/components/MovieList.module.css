@@ -1,108 +1,93 @@
 .container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 20px;
+max-width: 1280px;
+margin: 0 auto;
+padding: 0 20px;
 }
-
 .searchContainer {
-  margin: 40px 0;
-  position: sticky;
-  top: 20px;
-  z-index: 10;
+margin: 40px 0;
+position: sticky;
+top: 20px;
+z-index: 10;
 }
-
 .searchInput {
-  width: 100%;
-  padding: 16px 24px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  color: #000 !important;
+width: 100%;
+padding: 16px 24px;
+border: none;
+border-radius: 50px;
+font-size: 1rem;
+background: #fff;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+transition: all 0.3s ease;
+color: #000 !important;
 }
-
 .searchInput:focus {
-  outline: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+outline: none;
+box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
-
 .genreFilters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 1.5rem;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 1.5rem;
 }
-
 .genreButton {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  background: #f0f0f0;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
+padding: 8px 16px;
+border: none;
+border-radius: 20px;
+background: #f0f0f0;
+color: #333;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.9rem;
 }
-
 .genreButton:hover {
-  background: #3498db;
-  color: white;
+background: #3498db;
+color: white;
 }
-
 .activeGenre {
-  background: #2ecc71 !important;
-  color: white !important;
+background: #2ecc71 !important;
+color: white !important;
 }
-
 .timeFilters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 2rem;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: 2rem;
 }
-
 .timeButton {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  background: #f0f0f0;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
+padding: 8px 16px;
+border: none;
+border-radius: 20px;
+background: #f0f0f0;
+color: #333;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.9rem;
 }
-
 .timeButton:hover {
-  background: #3498db;
-  color: white;
+background: #3498db;
+color: white;
 }
-
 .activeTime {
-  background: #e67e22 !important;
-  color: white !important;
+background: #e67e22 !important;
+color: white !important;
 }
-
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 32px;
-  padding-bottom: 40px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 32px;
+padding-bottom: 40px;
 }
-
 .emptyState {
-  text-align: center;
-  padding: 80px 20px;
-  color: #666;
+text-align: center;
+padding: 80px 20px;
+color: #666;
 }
-
 .emptyState h2 {
-  margin-bottom: 16px;
-  color: #333;
+margin-bottom: 16px;
+color: #333;
 }
-
 .cardLink {
-  text-decoration: none;
-  color: inherit;
+text-decoration: none;
+color: inherit;
 }

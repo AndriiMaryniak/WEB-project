@@ -1,45 +1,45 @@
 {
-  "name": "cinema-booking",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "ajv": "^8.12.0",
-    "ajv-keywords": "^5.1.0",
-    "assert": "^2.1.0",
-    "axios": "^1.6.2",
-    "browserify-zlib": "^0.2.0",
-    "crypto-browserify": "^3.12.0",
-    "https-browserify": "^1.0.0",
-    "process": "^0.11.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
-    "react-router-dom": "^6.23.1",
-    "react-scripts": "5.0.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.1",
-    "util": "^0.12.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "server": "json-server --watch db.json --port 3001"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@craco/craco": "^7.1.0"
-  }
+"name": "cinema-booking",
+"version": "0.1.0",
+"private": true,
+"dependencies": {
+"ajv": "^8.12.0",
+"ajv-keywords": "^5.1.0",
+"assert": "^2.1.0",
+"axios": "^1.6.2",
+"browserify-zlib": "^0.2.0",
+"crypto-browserify": "^3.12.0",
+"https-browserify": "^1.0.0",
+"process": "^0.11.10",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-icons": "^4.12.0",
+"react-router-dom": "^6.23.1",
+"react-scripts": "5.0.1",
+"stream-browserify": "^3.0.0",
+"stream-http": "^3.2.0",
+"url": "^0.11.1",
+"util": "^0.12.5",
+"web-vitals": "^2.1.4"
+},
+"scripts": {
+"start": "craco start",
+"build": "craco build",
+"server": "json-server --watch db.json --port 3001"
+},
+"browserslist": {
+"production": [
+">0.2%",
+"not dead",
+"not op_mini all"
+],
+"development": [
+"last 1 chrome version",
+"last 1 firefox version",
+"last 1 safari version"
+]
+},
+"devDependencies": {
+"@craco/craco": "^7.1.0"
+}
 }
