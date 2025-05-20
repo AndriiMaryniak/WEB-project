@@ -13,16 +13,15 @@
   margin: 2rem auto;
 }
 
-.qr {
-  width: 200px;
-  height: 200px;
-  background: #f0f0f0;
-  margin: 2rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
+.qrContainer {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.qrCaption {
   color: #666;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
 .homeButton {
@@ -33,6 +32,11 @@
   text-decoration: none;
   border-radius: 8px;
   margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.homeButton:hover {
+  background: #2980b9;
 }
 
 .loading {

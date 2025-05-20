@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
+import { QRCodeSVG } from 'qrcode.react'; // Виправлений імпорт
 import styles from './BookingConfirmation.module.css';
 
 const BookingConfirmation = () => {
@@ -23,15 +24,33 @@ const BookingConfirmation = () => {
 
   if (!movie || !booking) return <div className={styles.loading}>Завантаження...</div>;
 
+  const qrData = JSON.stringify({
+    movie: movie.title,
+    showtime: booking.showtime,
+    seats: booking.seats,
+    date: booking.date
+  });
+
   return (
     <div className={styles.container}>
-      <h1>Бронювання успішне! 🎉</h1>
+      <h1>Бронювання підтверджено! 🎉</h1>
       <div className={styles.ticket}>
         <h2>{movie.title}</h2>
-        <p>Час сеансу: {booking.showtime}</p>
-        <p>Місця: {booking.seats.join(', ')}</p>
-        <p>Дата бронювання: {booking.date}</p>
-        <div className={styles.qr}>QR-код для сканування</div>
+        <p><strong>Час сеансу:</strong> {booking.showtime}</p>
+        <p><strong>Місця:</strong> {booking.seats.join(', ')}</p>
+        <p><strong>Ряд:</strong> {booking.seats[0].split('-')[0]}</p>
+        <p><strong>Дата бронювання:</strong> {booking.date}</p>
+        
+        <div className={styles.qrContainer}>
+          <QRCodeSVG 
+            value={qrData} 
+            size={200}
+            level="H"
+            includeMargin={true}
+            fgColor="#2c3e50"
+          />
+          <p className={styles.qrCaption}>Пред'явіть цей QR-код на касі</p>
+        </div>
       </div>
       <Link to="/" className={styles.homeButton}>На головну</Link>
     </div>

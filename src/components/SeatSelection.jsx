@@ -10,20 +10,29 @@ const SeatSelection = () => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [movie, setMovie] = useState(null);
 
-  // Генерація місць
   const generateSeats = () => {
-    const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
-    return rows.flatMap((row) => 
-      Array.from({ length: 8 }, (_, index) => ({
-        id: `${row}${index + 1}`,
+    const rows = Array.from({ length: 10 }, (_, i) => i + 1);
+    return rows.flatMap(row => {
+      const leftSection = Array.from({ length: 6 }, (_, i) => ({
+        id: `${row}-${i + 1}`,
         row: row,
-        number: index + 1,
+        number: i + 1,
+        section: 'left',
         isAvailable: Math.random() > 0.3
-      }))
-    );
+      }));
+      
+      const rightSection = Array.from({ length: 6 }, (_, i) => ({
+        id: `${row}-${i + 7}`,
+        row: row,
+        number: i + 7,
+        section: 'right',
+        isAvailable: Math.random() > 0.3
+      }));
+
+      return [...leftSection, ...rightSection];
+    });
   };
 
-  // Завантаження стану місць
   useEffect(() => {
     const savedSeats = localStorage.getItem(`seats-${movieId}-${showtime}`);
     const initialSeats = savedSeats ? JSON.parse(savedSeats) : generateSeats();
@@ -36,7 +45,6 @@ const SeatSelection = () => {
     fetchMovie();
   }, [movieId, showtime]);
 
-  // Обробник вибору місця
   const handleSeatClick = (seatId) => {
     const updatedSeats = seats.map(seat => 
       seat.id === seatId ? { ...seat, isSelected: !seat.isSelected } : seat
@@ -49,7 +57,6 @@ const SeatSelection = () => {
     );
   };
 
-  // Підтвердження бронювання
   const handleBooking = () => {
     const bookingData = {
       movieId,
@@ -58,11 +65,9 @@ const SeatSelection = () => {
       date: new Date().toLocaleString()
     };
 
-    // Зберігання в localStorage
     const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     localStorage.setItem('bookings', JSON.stringify([...bookings, bookingData]));
     
-    // Оновлення статусу місць
     const updatedSeats = seats.map(seat => 
       selectedSeats.includes(seat.id) ? { ...seat, isAvailable: false } : seat
     );
@@ -79,11 +84,30 @@ const SeatSelection = () => {
       <div className={styles.screen}>🎬 ЕКРАН</div>
 
       <div className={styles.seatMap}>
-        {[...new Set(seats.map(seat => seat.row))].map(row => (
+        {[...new Set(seats.map(seat => seat.row))].sort((a, b) => a - b).map(row => (
           <div key={row} className={styles.row}>
             <span className={styles.rowLabel}>Ряд {row}</span>
-            <div className={styles.seats}>
-              {seats.filter(seat => seat.row === row).map(seat => (
+            
+            <div className={styles.section}>
+              {seats.filter(s => s.row === row && s.section === 'left').map(seat => (
+                <button
+                  key={seat.id}
+                  className={`${styles.seat} ${
+                    !seat.isAvailable ? styles.taken :
+                    seat.isSelected ? styles.selected : ''
+                  }`}
+                  onClick={() => handleSeatClick(seat.id)}
+                  disabled={!seat.isAvailable}
+                >
+                  {seat.number}
+                </button>
+              ))}
+            </div>
+
+            <div className={styles.aisle}></div>
+
+            <div className={styles.section}>
+              {seats.filter(s => s.row === row && s.section === 'right').map(seat => (
                 <button
                   key={seat.id}
                   className={`${styles.seat} ${
