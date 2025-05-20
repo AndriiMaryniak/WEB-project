@@ -6,12 +6,13 @@
 
 .screen {
   text-align: center;
-  font-size: 1.5rem;
-  color: #666;
-  margin: 2rem 0;
-  padding: 1rem;
-  background: #f0f0f0;
-  border-radius: 8px;
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.03);
+  border-radius: 12px;
+  font-weight: 600;
+  color: var(--text-medium);
 }
 
 .seatMap {
@@ -20,16 +21,16 @@
 
 .row {
   display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  gap: 2rem;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .rowLabel {
   width: 80px;
   text-align: center;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary);
 }
 
 .section {
@@ -39,7 +40,7 @@
 
 .aisle {
   width: 60px;
-  background: #f8f9fa;
+  background: var(--background);
   margin: 0 1rem;
   border-radius: 4px;
 }
@@ -47,30 +48,26 @@
 .seat {
   width: 40px;
   height: 40px;
-  border: 2px solid #3498db;
+  border: 2px solid var(--secondary);
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: white;
+  background: var(--surface);
+  color: var(--text-medium);
   transition: all 0.2s ease;
 }
 
-.seat:hover:not(.taken) {
-  background: #3498db;
-  color: white;
-}
-
 .selected {
-  background: #2ecc71 !important;
-  border-color: #27ae60 !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
   color: white !important;
 }
 
 .taken {
-  background: #e74c3c;
-  border-color: #c0392b;
+  background: #F0E5E5;
+  border-color: #E0D5D5;
   cursor: not-allowed;
 }
 
@@ -85,6 +82,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--text-medium);
 }
 
 .actions {
@@ -95,31 +93,30 @@
 
 .bookButton {
   padding: 1rem 2rem;
-  background: #e67e22;
-  color: white;
+  background: var(--accent);
+  color: var(--surface);
   border: none;
   border-radius: 8px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
 }
 
-.bookButton:disabled {
-  background: #95a5a6;
-  cursor: not-allowed;
+.bookButton:hover {
+  transform: scale(1.05);
 }
 
 .backButton {
-  color: #3498db;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border: 2px solid #3498db;
+  border: 2px solid var(--accent);
   border-radius: 5px;
 }
 
 .loading {
   text-align: center;
   padding: 4rem;
-  color: #666;
+  color: var(--text-medium);
 }

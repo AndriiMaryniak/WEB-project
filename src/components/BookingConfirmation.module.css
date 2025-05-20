@@ -6,20 +6,33 @@
 }
 
 .ticket {
-  background: white;
-  padding: 2rem;
+  background: var(--surface);
+  padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  margin: 2rem auto;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.ticket h2 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.ticket p {
+  color: var(--text-medium);
+  margin: 1rem 0;
+  font-size: 1.1rem;
 }
 
 .qrContainer {
   margin: 2rem 0;
-  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255,127,127,0.05);
+  border-radius: 12px;
 }
 
 .qrCaption {
-  color: #666;
+  color: var(--text-medium) !important;
   margin-top: 1rem;
   font-size: 0.9rem;
 }
@@ -27,20 +40,19 @@
 .homeButton {
   display: inline-block;
   padding: 1rem 2rem;
-  background: #3498db;
-  color: white;
+  background: var(--accent);
+  color: var(--surface);
   text-decoration: none;
   border-radius: 8px;
-  margin-top: 1rem;
-  transition: background 0.3s;
+  transition: all 0.3s;
 }
 
 .homeButton:hover {
-  background: #2980b9;
+  background: #FF5252;
 }
 
 .loading {
   text-align: center;
   padding: 4rem;
-  color: #666;
+  color: var(--text-medium);
 }

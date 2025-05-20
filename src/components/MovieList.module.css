@@ -17,15 +17,15 @@
   border: none;
   border-radius: 50px;
   font-size: 1rem;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: var(--surface);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  color: #000 !important;
+  color: var(--text-dark) !important;
 }
 
 .searchInput:focus {
   outline: none;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .genreFilters {
@@ -37,22 +37,17 @@
 
 .genreButton {
   padding: 8px 16px;
-  border: none;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 20px;
-  background: #f0f0f0;
-  color: #333;
+  background: var(--surface);
+  color: var(--text-medium);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.9rem;
 }
 
-.genreButton:hover {
-  background: #3498db;
-  color: white;
-}
-
 .activeGenre {
-  background: #2ecc71 !important;
+  background: var(--accent) !important;
   color: white !important;
 }
 
@@ -65,22 +60,17 @@
 
 .timeButton {
   padding: 8px 16px;
-  border: none;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 20px;
-  background: #f0f0f0;
-  color: #333;
+  background: var(--surface);
+  color: var(--text-medium);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.9rem;
 }
 
-.timeButton:hover {
-  background: #3498db;
-  color: white;
-}
-
 .activeTime {
-  background: #e67e22 !important;
+  background: var(--accent) !important;
   color: white !important;
 }
 
@@ -94,15 +84,10 @@
 .emptyState {
   text-align: center;
   padding: 80px 20px;
-  color: #666;
+  color: var(--text-medium);
 }
 
 .emptyState h2 {
   margin-bottom: 16px;
-  color: #333;
-}
-
-.cardLink {
-  text-decoration: none;
-  color: inherit;
+  color: var(--text-dark);
 }

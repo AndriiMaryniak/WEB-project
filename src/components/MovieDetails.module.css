@@ -1,9 +1,10 @@
 .container {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 0 1rem;
-  display: flex;
-  gap: 2rem;
+  padding: 2rem;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .posterContainer {
@@ -19,20 +20,30 @@
 
 .detailsContent {
   flex: 2;
+  padding-left: 2rem;
 }
 
 .metaInfo {
   display: flex;
   gap: 1.5rem;
-  margin: 1rem 0;
-  color: #666;
+  margin: 1.5rem 0;
+  color: var(--text-medium);
+}
+
+.metaInfo span {
+  background: rgba(94,79,162,0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
   font-size: 0.9rem;
+  border: 1px solid rgba(94,79,162,0.2);
+  color: var(--primary);
 }
 
 .description {
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-medium);
   margin: 2rem 0;
-  color: #444;
 }
 
 .showtimesSection {
@@ -43,40 +54,32 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 1rem 0;
 }
 
 .timeButton {
   padding: 0.8rem 1.5rem;
-  background: #3498db;
-  color: white;
+  background: var(--accent);
+  color: var(--surface) !important;
   border: none;
   border-radius: 8px;
   text-decoration: none;
-  transition: background 0.3s;
+  transition: all 0.3s;
 }
 
 .timeButton:hover {
-  background: #2980b9;
+  background: #FF5252;
 }
 
 .backLink {
   display: inline-block;
-  margin-top: 2rem;
-  color: #3498db;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
+  margin-top: 2rem;
 }
 
 .loading {
   text-align: center;
   padding: 4rem;
-  font-size: 1.2rem;
-  color: #666;
-}
-
-.error {
-  text-align: center;
-  padding: 4rem;
-  color: #e74c3c;
+  color: var(--text-medium);
 }
