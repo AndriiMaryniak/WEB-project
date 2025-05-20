@@ -1,0 +1,42 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.ticket {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+}
+
+.qr {
+  width: 200px;
+  height: 200px;
+  background: #f0f0f0;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #666;
+}
+
+.homeButton {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+}

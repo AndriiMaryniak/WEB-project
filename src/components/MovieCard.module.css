@@ -1,94 +1,110 @@
 .card {
-background: #fff;
-border-radius: 16px;
-box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-overflow: hidden;
-transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-cursor: pointer;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
+
 .card:hover {
-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
+
 .posterWrapper {
-position: relative;
-aspect-ratio: 2/3;
+  position: relative;
+  aspect-ratio: 2 / 3;
 }
+
 .poster {
-width: 100%;
-height: 100%;
-object-fit: cover;
-border-radius: 16px 16px 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
 }
+
 .content {
-padding: 20px;
+  padding: 20px;
 }
+
 .title {
-margin: 0 0 12px;
-font-size: 1.3rem;
-color: #1a1a1a;
-line-height: 1.3;
+  margin: 0 0 12px;
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  line-height: 1.3;
 }
+
 .showtimes {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
 }
+
 .timeButton {
-background: #f0f0f0;
-border: none;
-padding: 8px 16px;
-border-radius: 8px;
-font-weight: 500;
-color: #333;
-cursor: pointer;
-transition: all 0.2s ease;
+  background: #f0f0f0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
+
 .timeButton:hover {
-background: #3498db;
-color: white;
+  background: #3498db;
+  color: white;
 }
+
 .selected {
-background: #2ecc71 !important;
-color: white !important;
+  background: #2ecc71 !important;
+  color: white !important;
 }
+
 .cardLink {
-text-decoration: none;
-color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
+
 .detailsContainer {
-max-width: 800px;
-margin: 2rem auto;
-padding: 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
+
 .detailsPoster {
-width: 100%;
-max-height: 500px;
-object-fit: cover;
-border-radius: 12px;
-margin-bottom: 1.5rem;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
 }
+
 .fullDescription {
-font-size: 1.1rem;
-line-height: 1.6;
-margin: 1.5rem 0;
-color: #444;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  color: #444;
 }
+
 .backButton {
-display: inline-block;
-padding: 12px 24px;
-background: #3498db;
-color: white;
-border-radius: 8px;
-text-decoration: none;
-transition: background 0.3s;
-margin-top: 1rem;
+  display: inline-block;
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+  margin-top: 1rem;
 }
+
 .backButton:hover {
-background: #2980b9;
+  background: #2980b9;
 }
+
 .error {
-text-align: center;
-padding: 2rem;
-color: #e74c3c;
+  text-align: center;
+  padding: 2rem;
+  color: #e74c3c;
 }

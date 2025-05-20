@@ -1,32 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import styles from './MovieCard.module.css';
-const MovieDetails = ({ movies }) => {
-const { id } = useParams();
-const movie = movies.find(m => m.id === parseInt(id, 10));
-return (
-<div className={styles.detailsContainer}>
-{movie ? (
-<>
-<h2>{movie.title}</h2>
-<img src={movie.poster} alt={movie.title} className={styles.detailsPoster} />
-<p className={styles.fullDescription}>{movie.description}</p>
-<div className={styles.showtimes}>
-Сеанси: {movie.showtimes.join(', ')}
-</div>
-<Link to="/" className={styles.backButton}>← На головну</Link>
-</>
-) : (
-<div className={styles.error}>
-<h2>Фільм не знайдено 😕</h2>
-<Link to="/" className={styles.backButton}>Повернутися</Link>
-</div>
-)}
-</div>
-);
+import axios from 'axios';
+import styles from './MovieDetails.module.css'; // Виправлений імпорт
+
+const MovieDetails = () => {
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMovie = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3001/movies/${id}`);
+        setMovie(response.data);
+      } catch (error) {
+        console.error('Помилка завантаження фільму:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchMovie();
+  }, [id]);
+
+  if (loading) return <div className={styles.loading}>Завантаження...</div>;
+  if (!movie) return <div className={styles.error}>Фільм не знайдено</div>;
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.posterContainer}>
+        <img 
+          src={movie.poster} 
+          alt={movie.title} 
+          className={styles.poster}
+        />
+      </div>
+      
+      <div className={styles.detailsContent}>
+        <h1>{movie.title}</h1>
+        <div className={styles.metaInfo}>
+          <span>Рейтинг: ⭐ {movie.rating}</span>
+          <span>Тривалість: 🕒 {movie.duration} хв</span>
+          <span>Жанр: {movie.genre}</span>
+        </div>
+        
+        <p className={styles.description}>{movie.description}</p>
+        
+        <div className={styles.showtimesSection}>
+          <h2>Оберіть час сеансу:</h2>
+          <div className={styles.timeButtons}>
+            {movie.showtimes.map(time => (
+              <Link
+                key={time}
+                to={`/book/${movie.id}/${time}`}
+                className={styles.timeButton}
+              >
+                {time}
+              </Link>
+            ))}
+          </div>
+        </div>
+        
+        <Link to="/" className={styles.backLink}>
+          ← Повернутися на головну
+        </Link>
+      </div>
+    </div>
+  );
 };
-MovieDetails.propTypes = {
-movies: PropTypes.array.isRequired
-};
+
 export default MovieDetails;

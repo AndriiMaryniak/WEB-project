@@ -1,0 +1,118 @@
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.screen {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+
+.seatMap {
+  margin-bottom: 2rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.rowLabel {
+  width: 100px;
+  text-align: center;
+  font-weight: 500;
+  color: #444;
+}
+
+.seats {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.seat:hover:not(.taken) {
+  background: #3498db;
+  color: white;
+}
+
+.selected {
+  background: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: white !important;
+}
+
+.taken {
+  background: #e74c3c;
+  border-color: #c0392b;
+  cursor: not-allowed;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookButton {
+  padding: 1rem 2rem;
+  background: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.bookButton:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.backButton {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+}
