@@ -33,7 +33,12 @@ const MovieCard = ({ movie }) => {
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.object.isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    showtimes: PropTypes.arrayOf(PropTypes.string).isRequired
+  }).isRequired
 };
 
 export default MovieCard;
