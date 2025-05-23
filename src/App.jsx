@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -6,6 +5,7 @@ import Home from './pages/Home';
 import MovieDetails from './components/MovieDetails';
 import Booking from './pages/Booking';
 import BookingConfirmation from './components/BookingConfirmation';
+import NotFound from './pages/NotFound';
 import Loader from './components/Loader';
 import './index.css';
 
@@ -51,6 +51,8 @@ function App() {
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/booking/:id" element={<Booking />} />
           <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
