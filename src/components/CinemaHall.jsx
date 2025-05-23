@@ -1,15 +1,14 @@
-// src/components/CinemaHall.jsx
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CinemaHall.module.css';
 
-const CinemaHall = ({ selectedSeats, setSelectedSeats }) => {
+const CinemaHall = ({ movieId, onSeatSelect }) => {
   const [seats, setSeats] = useState([]);
   const rows = 8;
   const cols = 10;
 
   useEffect(() => {
-    const savedSeats = JSON.parse(localStorage.getItem('cinemaSeats') || '[]');
+    const savedSeats = JSON.parse(localStorage.getItem(`seats_${movieId}`) || '[]');
     if (savedSeats.length > 0) {
       setSeats(savedSeats);
     } else {
@@ -20,19 +19,20 @@ const CinemaHall = ({ selectedSeats, setSelectedSeats }) => {
       }));
       setSeats(initialSeats);
     }
-  }, []);
+  }, [movieId]);
 
   const handleSeatClick = (seatId) => {
-    if (seats[seatId - 1].isBooked) return;
-
-    const updatedSeats = seats.map(seat => 
-      seat.id === seatId ? { ...seat, isSelected: !seat.isSelected } : seat
-    );
+    const updatedSeats = seats.map(seat => {
+      if (seat.id === seatId && !seat.isBooked) {
+        return { ...seat, isSelected: !seat.isSelected };
+      }
+      return seat;
+    });
     
     setSeats(updatedSeats);
-    const newSelected = updatedSeats.filter(s => s.isSelected).map(s => s.id);
-    setSelectedSeats(newSelected);
-    localStorage.setItem('cinemaSeats', JSON.stringify(updatedSeats));
+    const selected = updatedSeats.filter(s => s.isSelected).map(s => s.id);
+    onSeatSelect(selected);
+    localStorage.setItem(`seats_${movieId}`, JSON.stringify(updatedSeats));
   };
 
   return (
@@ -58,8 +58,8 @@ const CinemaHall = ({ selectedSeats, setSelectedSeats }) => {
 };
 
 CinemaHall.propTypes = {
-  selectedSeats: PropTypes.array.isRequired,
-  setSelectedSeats: PropTypes.func.isRequired
+  movieId: PropTypes.string.isRequired,
+  onSeatSelect: PropTypes.func.isRequired
 };
 
 export default CinemaHall;
