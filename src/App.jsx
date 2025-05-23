@@ -1,9 +1,10 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import MovieList from './components/MovieList';
+import Home from './pages/Home';
 import MovieDetails from './components/MovieDetails';
-import SeatSelection from './components/SeatSelection';
+import Booking from './pages/Booking';
 import BookingConfirmation from './components/BookingConfirmation';
 import Loader from './components/Loader';
 import './index.css';
@@ -39,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             loading ? <Loader /> :
-            <MovieList
+            <Home
               movies={movies}
               selectedGenre={selectedGenre}
               setSelectedGenre={setSelectedGenre}
@@ -48,8 +49,8 @@ function App() {
             />
           }/>
           <Route path="/movie/:id" element={<MovieDetails />} />
-          <Route path="/book/:movieId/:showtime" element={<SeatSelection />} />
-          <Route path="/booking-confirmation/:movieId/:showtime" element={<BookingConfirmation />} />
+          <Route path="/booking/:id" element={<Booking />} />
+          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         </Routes>
       </div>
     </Router>
