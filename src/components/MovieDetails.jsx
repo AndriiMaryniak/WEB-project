@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import styles from './MovieDetails.module.css'; // Виправлений імпорт
+import styles from './MovieDetails.module.css';
 
 const MovieDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,15 +16,16 @@ const MovieDetails = () => {
         setMovie(response.data);
       } catch (error) {
         console.error('Помилка завантаження фільму:', error);
+        navigate('/not-found', { replace: true });
       } finally {
         setLoading(false);
       }
     };
     fetchMovie();
-  }, [id]);
+  }, [id, navigate]);
 
   if (loading) return <div className={styles.loading}>Завантаження...</div>;
-  if (!movie) return <div className={styles.error}>Фільм не знайдено</div>;
+  if (!movie) return null;
 
   return (
     <div className={styles.container}>
