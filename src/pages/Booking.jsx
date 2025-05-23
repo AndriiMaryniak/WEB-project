@@ -16,50 +16,61 @@ const Booking = () => {
         const response = await axios.get(`http://localhost:3001/movies/${id}`);
         setMovie(response.data);
       } catch (error) {
-        console.error('Error fetching movie:', error);
-        navigate('/');
+        console.error('Помилка завантаження фільму:', error);
+        navigate('/not-found');
       }
     };
     fetchMovie();
   }, [id, navigate]);
 
   const handleBooking = () => {
-    const booking = {
+    const bookingData = {
       movieId: id,
-      movieTitle: movie.title,
       seats: selectedSeats,
       date: new Date().toLocaleString()
     };
+
+    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
+    const updatedBookings = [
+      ...bookings.filter(b => b.movieId !== id),
+      bookingData
+    ];
     
-    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    localStorage.setItem('bookings', JSON.stringify([...bookings, booking]));
-    navigate('/booking-confirmation');
+    localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+    navigate(`/booking-confirmation/${id}`);
   };
 
   if (!movie) return <div className={styles.loading}>Завантаження...</div>;
 
   return (
     <div className={styles.container}>
-      <h1>{movie.title}</h1>
-      <p className={styles.subtitle}>Оберіть місця:</p>
+      <h1 className={styles.title}>{movie.title}</h1>
+      <p className={styles.subtitle}>Оберіть місця у кінозале</p>
       
       <CinemaHall 
         movieId={id}
         onSeatSelect={setSelectedSeats}
       />
       
-      <div className={styles.bookingInfo}>
-        <h3>Обрані місця: {selectedSeats.join(', ') || '---'}</h3>
+      <div className={styles.bookingPanel}>
+        <h3 className={styles.selectedTitle}>Обрані місця:</h3>
+        <div className={styles.selectedSeats}>
+          {selectedSeats.length > 0 
+            ? selectedSeats.join(', ') 
+            : 'Ще не обрано'}
+        </div>
         <button
           onClick={handleBooking}
           disabled={!selectedSeats.length}
           className={styles.bookButton}
         >
-          Забронювати ({selectedSeats.length})
+          Підтвердити ({selectedSeats.length})
         </button>
+        
+        <Link to={`/movie/${id}`} className={styles.backLink}>
+          ← Назад до фільму
+        </Link>
       </div>
-      
-      <Link to="/" className={styles.backLink}>← Назад до списку</Link>
     </div>
   );
 };

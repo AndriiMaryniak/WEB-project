@@ -53,7 +53,7 @@ const MovieDetails = () => {
             {movie.showtimes.map(time => (
               <Link
                 key={time}
-                to={`/book/${movie.id}/${time}`}
+                to={`/booking/${movie.id}`}
                 className={styles.timeButton}
               >
                 {time}

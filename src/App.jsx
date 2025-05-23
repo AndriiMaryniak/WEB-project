@@ -50,7 +50,7 @@ function App() {
           }/>
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/booking/:id" element={<Booking />} />
-          <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route path="/booking-confirmation/:movieId" element={<BookingConfirmation />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
