@@ -1,0 +1,15 @@
+.container {
+  text-align: center;
+  padding: 4rem;
+  min-height: 100vh;
+}
+
+.homeLink {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
