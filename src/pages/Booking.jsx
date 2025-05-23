@@ -24,19 +24,22 @@ const Booking = () => {
   }, [id, navigate]);
 
   const handleBooking = () => {
-    const bookingData = {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
+    const existingIndex = bookings.findIndex(b => b.movieId === id);
+    
+    const newBooking = {
       movieId: id,
       seats: selectedSeats,
       date: new Date().toLocaleString()
     };
 
-    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
-    const updatedBookings = [
-      ...bookings.filter(b => b.movieId !== id),
-      bookingData
-    ];
-    
-    localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+    if (existingIndex !== -1) {
+      bookings[existingIndex] = newBooking;
+    } else {
+      bookings.push(newBooking);
+    }
+
+    localStorage.setItem('bookings', JSON.stringify(bookings));
     navigate(`/booking-confirmation/${id}`);
   };
 

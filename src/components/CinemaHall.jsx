@@ -8,45 +8,44 @@ const CinemaHall = ({ movieId, onSeatSelect }) => {
   const cols = 10;
 
   useEffect(() => {
-    const savedSeats = JSON.parse(localStorage.getItem(`seats_${movieId}`) || '[]');
-    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    
+    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
     const occupiedSeats = bookings
       .filter(b => b.movieId === movieId)
       .flatMap(b => b.seats);
 
-    if (savedSeats.length > 0) {
-      const updatedSeats = savedSeats.map(seat => ({
-        ...seat,
-        isBooked: occupiedSeats.includes(seat.id)
-      }));
-      setSeats(updatedSeats);
-    } else {
-      const initialSeats = Array.from({ length: rows * cols }, (_, i) => ({
-        id: i + 1,
-        isBooked: occupiedSeats.includes(i + 1),
-        isSelected: false
-      }));
-      setSeats(initialSeats);
-    }
+    const savedSeats = JSON.parse(localStorage.getItem(`seats_${movieId}`) || '[]');
+    
+    const initialSeats = Array.from({ length: rows * cols }, (_, i) => {
+      const seatId = i + 1;
+      const savedSeat = savedSeats.find(s => s.id === seatId);
+      return {
+        id: seatId,
+        isBooked: occupiedSeats.includes(seatId),
+        isSelected: savedSeat ? savedSeat.isSelected : false
+      };
+    });
+
+    setSeats(initialSeats);
   }, [movieId]);
 
   const handleSeatClick = (seatId) => {
-    const updatedSeats = seats.map(seat => 
-      seat.id === seatId ? { ...seat, isSelected: !seat.isSelected } : seat
-    );
+    const updatedSeats = seats.map(seat => {
+      if (seat.id === seatId && !seat.isBooked) {
+        return { ...seat, isSelected: !seat.isSelected };
+      }
+      return seat;
+    });
     
     setSeats(updatedSeats);
-    const selected = updatedSeats
-      .filter(s => s.isSelected)
-      .map(s => s.id);
+    const selected = updatedSeats.filter(s => s.isSelected).map(s => s.id);
     onSeatSelect(selected);
     localStorage.setItem(`seats_${movieId}`, JSON.stringify(updatedSeats));
   };
 
-  const groupedSeats = Array.from({ length: rows }, (_, i) =>
-    seats.slice(i * cols, (i + 1) * cols)
-  );
+  const groupedSeats = [];
+  for (let i = 0; i < rows; i++) {
+    groupedSeats.push(seats.slice(i * cols, (i + 1) * cols));
+  }
 
   return (
     <div className={styles.hallContainer}>
