@@ -4,6 +4,15 @@ import axios from 'axios';
 import CinemaHall from '../components/CinemaHall';
 import styles from './Booking.module.css';
 
+const safeParse = (key, defaultValue) => {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch {
+    return defaultValue;
+  }
+};
+
 const Booking = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,7 +33,7 @@ const Booking = () => {
   }, [id, navigate]);
 
   const handleBooking = () => {
-    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
+    const bookings = safeParse('bookings', []);
     const existingIndex = bookings.findIndex(b => b.movieId === id);
     
     const newBooking = {

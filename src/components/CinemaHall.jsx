@@ -2,18 +2,27 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './CinemaHall.module.css';
 
+const safeParse = (key, defaultValue) => {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch {
+    return defaultValue;
+  }
+};
+
 const CinemaHall = ({ movieId, onSeatSelect }) => {
   const [seats, setSeats] = useState([]);
   const rows = 8;
   const cols = 10;
 
   useEffect(() => {
-    const bookings = JSON.parse(localStorage.getItem('bookings') || []);
+    const bookings = safeParse('bookings', []);
     const occupiedSeats = bookings
       .filter(b => b.movieId === movieId)
       .flatMap(b => b.seats);
 
-    const savedSeats = JSON.parse(localStorage.getItem(`seats_${movieId}`) || '[]');
+    const savedSeats = safeParse(`seats_${movieId}`, []);
     
     const initialSeats = Array.from({ length: rows * cols }, (_, i) => {
       const seatId = i + 1;
@@ -21,7 +30,7 @@ const CinemaHall = ({ movieId, onSeatSelect }) => {
       return {
         id: seatId,
         isBooked: occupiedSeats.includes(seatId),
-        isSelected: savedSeat ? savedSeat.isSelected : false
+        isSelected: savedSeat?.isSelected || false
       };
     });
 

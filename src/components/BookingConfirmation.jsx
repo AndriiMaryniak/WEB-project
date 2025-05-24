@@ -4,6 +4,15 @@ import axios from 'axios';
 import { QRCodeSVG } from 'qrcode.react';
 import styles from './BookingConfirmation.module.css';
 
+const safeParse = (key, defaultValue) => {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch {
+    return defaultValue;
+  }
+};
+
 const BookingConfirmation = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -12,7 +21,7 @@ const BookingConfirmation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bookings = JSON.parse(localStorage.getItem('bookings') || []);
+        const bookings = safeParse('bookings', []);
         const foundBooking = bookings.find(b => b.movieId === movieId);
         
         if (foundBooking) {
@@ -37,7 +46,7 @@ const BookingConfirmation = () => {
       <div className={styles.ticket}>
         <h2 className={styles.movieTitle}>{movie.title}</h2>
         <div className={styles.details}>
-          <p><strong>Місця:</strong> {booking.seats.join(', ')}</p>
+          <p><strong>Місця:</strong> {booking.seats?.join(', ') || '---'}</p>
           <p><strong>Дата:</strong> {booking.date}</p>
         </div>
         <div className={styles.qrWrapper}>
