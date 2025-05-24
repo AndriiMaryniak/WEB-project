@@ -29,7 +29,6 @@
   padding: 2rem;
   border-radius: 12px;
   margin-top: 3rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .selectedTitle {
@@ -56,17 +55,12 @@
   border-radius: 8px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s;
 }
 
 .bookButton:disabled {
   background: #7f8c8d;
   cursor: not-allowed;
-}
-
-.bookButton:hover:not(:disabled) {
-  background: #219a52;
-  transform: translateY(-2px);
 }
 
 .backLink {
@@ -75,7 +69,6 @@
   color: #bdc3c7;
   text-decoration: none;
   margin-top: 1rem;
-  transition: color 0.2s ease;
 }
 
 .backLink:hover {
